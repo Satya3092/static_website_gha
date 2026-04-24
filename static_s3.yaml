@@ -1,16 +1,22 @@
 name: Deploy html to s3
-on: push
-job:
+
+on: 
+  push:
+
+jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      -  name: checkout code
-         uses: actions/checkout@v4
-      -  - name: Configure AWS Credentials
-            uses: aws-actions/configure-aws-credentials@v6.1.0
-             with: 
-            aws-region: us-east-1
-            role-to-assume: arn:aws:iam::941178226082:user/static
-            aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-            aws-secret-access-key: ${{ secrets.SECRET_KEY }
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+
+      
             

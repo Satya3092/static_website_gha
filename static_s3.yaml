@@ -1,6 +1,6 @@
 name: Deploy html to s3
 
-on: 
+on:
   push:
 
 jobs:
@@ -17,6 +17,9 @@ jobs:
           aws-region: us-east-1
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+
+      - name: Deploy to S3
+        run: aws s3 sync . s3://static112233
 
       
             
